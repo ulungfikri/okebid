@@ -84,7 +84,7 @@ class Auth extends REST_Controller
                       <p>Email: ".$email."</p>
                       <p>Password: ".$password."</p>
                       <p>Please click the link below to activate your account.</p>
-                      <h4><a href='localhost/apiokebid/Register/activate/".$contact_phone."/".$activation_key."'>Activate My Account</a></h4>
+                      <h4><a href='localhost/okebid/Register/activate/".$contact_phone."/".$activation_key."'>Activate My Account</a></h4>
                     </body>
                     </html>
                     ";

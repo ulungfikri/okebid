@@ -138,7 +138,7 @@ class User extends REST_Controller {
                             <p>Code Activation: ".$activation_key."</p>
                             <p>Enter the activation code above</p>
                             <p>Please click the link below to activate your account.</p>
-                            <h4><a href='http://api.okebid.com/index.php/Register/activateclient/".base64_encode($email)."/".$activation_key."'>Activate My Account</a></h4>
+                            <h4><a href='https://api.okebid.com/index.php/Register/activateclient/".base64_encode($email)."/".$activation_key."'>Activate My Account</a></h4>
                         </body>
                         </html>
                         ";
