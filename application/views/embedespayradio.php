@@ -20,7 +20,8 @@
             var data = {
                 key: "62459f556dfb212be41cf48ade72",
                 paymentId: "<?php echo $invoice;?>",
-                backUrl: "https://api.okebid.com/showpaymen/backurl",
+                // backUrl: "https://api.okebid.com/showpaymen/backurl",
+                backUrl: "http://localhost/okebid/showpaymen/backurl",
 				display : 'option'
             },
             sgoPlusIframe = document.getElementById("sgoplus-iframe");

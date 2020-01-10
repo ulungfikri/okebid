@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Showpaymen extends CI_Controller {
+class Showinvoice extends CI_Controller {
 
     protected $inv= '';
     protected $token = '';
@@ -27,15 +27,13 @@ class Showpaymen extends CI_Controller {
             echo "token tidak valid";
         }
     }
-    public function backurl()
-    {
-        echo "Mohon Di tunggu Pembayaran Sedang Di Proses";
-    }
 
-    public function PaymentStatus()
+
+    public function InvoiceStatus()
     {
-        $no_invoice = $this->input->post('no_invoice');
-        if ($no_invoice == null) {
+        // $no_invoice = $this->input->post('no_invoice');
+        $order_id = $this->input->post('order_id');
+        if ($order_id == null) {
             $arr = array(
                 'status' => 'Error',
                 'message'=> 'No invoice Tidak Ada'
@@ -43,7 +41,7 @@ class Showpaymen extends CI_Controller {
             return json_encode($arr);
             // die();
         }
-        $q = $this->db->query("select no_invoice from mt_payment_order where no_invoice = '$no_invoice'");
+        $q = $this->db->query("select order_id from mt_order where order_id = '$order_id'");
         if ($q->num_rows() == 0) {
             $arr = array(
                 'status' => 'Error',
@@ -54,17 +52,18 @@ class Showpaymen extends CI_Controller {
         }
         //echo var_dump($no_invoice);
         $rq_datetime = date("Y-m-d H:i:s");
-        $order_id = $no_invoice;
+        $order_id = $order_id;
         $rq_uuid = md5($order_id);
         $amount = '';
-        $ccy = '';
+        $ccy = 'IDR';
         $comm_code = 'SGWOKEBID002';
-        $mode = 'CHECKSTATUS';
+        $mode = 'PAYMENTREPORT';
 
-        //echo $this->generatesignature_raw($rq_uuid ,$rq_datetime ,$order_id,$amount,$ccy ,$comm_code ,$mode);
-        //die();
+        echo $this->generatesignature_raw($rq_uuid ,$rq_datetime ,$order_id,$amount,$ccy ,$comm_code ,$mode);
+        die();
         
-        $curl = $this->curlPost('https://sandbox-api.espay.id/rest/merchant/status', [
+        $curl = $this->curlPost('https://sandbox-api.espay.id/rest/merchantpg/sendinvoice',
+         [
             'uuid' => $rq_uuid,
             'rq_datetime' => $rq_datetime,
             'comm_code' => $comm_code,
@@ -73,7 +72,7 @@ class Showpaymen extends CI_Controller {
         ]);
         $jsondata = json_decode($curl);
         //var_dump($jsondata);
-        $this->UpdateDataCekStatus($jsondata->bank_name,$jsondata->expired,$no_invoice);
+        // $this->UpdateDataCekStatus($jsondata->bank_name,$jsondata->expired,$no_invoice);
         echo json_encode($jsondata);
     }
     

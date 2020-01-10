@@ -147,11 +147,12 @@ class customer extends REST_Controller {
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
             'protocol'  => 'smtp',
-            'smtp_host' => 'smtp.sendgrid.net',
-            'smtp_user' => 'senookebid',
-            'smtp_pass' => 'justd0it123',
-            'smtp_port' => 587,
-            'crlf' => "\r\n",
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_user' => 'seno.seno97s@gmail.com',  // Email gmail
+            'smtp_pass'   => 'justd0it',  // Password gmail
+            'smtp_crypto' => 'ssl',
+            'smtp_port'   => 465,
+            'crlf'    => "\r\n",
             'newline' => "\r\n"
             ));
             

@@ -115,15 +115,16 @@ public function sendMail($email,$password,$contact_phone,$activation_key)
                       ";
 
         $this->email->initialize(array(
-          'mailtype'  => 'html',
-          'charset'   => 'utf-8',
-          'protocol'  => 'smtp',
-          'smtp_host' => 'smtp.sendgrid.net',
-          'smtp_user' => 'admiral08',
-          'smtp_pass' => 'cijati211',
-          'smtp_port' => 587,
-          'crlf' => "\r\n",
-          'newline' => "\r\n"
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'protocol'  => 'smtp',
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_user' => 'seno.seno97s@gmail.com',  // Email gmail
+            'smtp_pass'   => 'justd0it',  // Password gmail
+            'smtp_crypto' => 'ssl',
+            'smtp_port'   => 465,
+            'crlf'    => "\r\n",
+            'newline' => "\r\n"
         ));
         
         $this->email->from('no_reply@okebid.com', 'okebid');

@@ -148,8 +148,8 @@ class User extends REST_Controller {
             'charset'   => 'utf-8',
             'protocol'  => 'smtp',
             'smtp_host' => 'smtp.sendgrid.net',
-            'smtp_user' => 'admiral08',
-            'smtp_pass' => 'cijati211',
+            'smtp_user' => 'senookebid',
+            'smtp_pass' => 'justd0it123',
             'smtp_port' => 587,
             'crlf' => "\r\n",
             'newline' => "\r\n"
